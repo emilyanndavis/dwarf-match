@@ -12,12 +12,12 @@ putting the cards on the screen. all we need to worry about is the game logic an
 ###Step 1. Flipping Cards
 Loading up our game as-is will simply display a grid of face down cards. Clicking on them doesn't do anything. __Let's change that!__
 
-1. Let's open up the index.html and take a look
+1. Let's open up the game.html and take a look
 at how our cards are displayed
   * _Hint: check the card class_
 2. We have an idea of how to flip the card now,
 but we have some groundwork to lay first. Let's open up
-game-controller.js and follow the first comment
+game.js and follow the first comment
 
 ---
 
@@ -26,7 +26,7 @@ Fancy! Now we've got our cards flipping over, but we've
 created two new problems, we can flip over too many at once
 and they won't flip back! Let's take care of the former first.
 
-Back into game-controller.js we go! Why don't we take a look
+Back into game.js we go! Why don't we take a look
 at the resetCards function?
 
 We have a few functions to play with, let's start by thinking about the order in
@@ -58,10 +58,10 @@ Standard syntax for `$timeout()` looks like this:
 ```javascript
 $timeout(function() {
     // someCode
-}, delayInMiliseconds);
+}, delayInMilliseconds);
 ```
 
-Where `// someCode` is the code you want to execute _after_ `delayInMiliseconds`
+Where `// someCode` is the code you want to execute _after_ `delayInMilliseconds`
 For our purposes, `1000` miliseconds should suffice.
 
 Let's wrap up our last bit of code setting the cards.show in a `$timeout()` and give it another test run.
@@ -73,7 +73,7 @@ Alright! The game is mostly functional, but you may have noticed some ~~bugs~~ _
 our matched cards back over, or being able to flip too many cards at once.
 
 We can fix both of these issues pretty easily, to prevent selecting cards that are already flipped face up
-we can simply short-circut the `selectCard` function with an if statement that checks if the card being passed to `selectCard()`
+we can simply short-circuit the `selectCard` function with an if statement that checks if the card being passed to `selectCard()`
 is face up. If it is, just return!
   
 Now that we can't select face up cards, let's fix having too many cards face up at once.
